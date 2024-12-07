@@ -1,8 +1,19 @@
-# template-for-proposals
+# String.prototype.count Proposal
 
-A repository template for ECMAScript proposals.
+## Status
 
-## Before creating a proposal
+[Stage 0](https://tc39.github.io/process-document/) - Strawman
+
+## Introduction
+
+This proposal seeks to introduce a `count()` method to the `String.prototype` which counts the number of non-overlapping occurrences of a substring within a string. This method is analogous to Python's `str.count()` method.
+
+
+
+
+
+
+
 
 Please ensure the following:
   1. You have read the [process document](https://tc39.github.io/process-document/)
