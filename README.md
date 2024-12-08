@@ -117,4 +117,5 @@ Adding this method will not break existing code, as it adds new functionality to
 ## Q&A
 
 Q: Why not add an option to toggle case sensitivity?
+
 A: To maintain consistency with other string methods like `includes()`.
