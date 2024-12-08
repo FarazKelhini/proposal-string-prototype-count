@@ -3,8 +3,6 @@
 ## Status
 
 - Stage: [0 - Strawman](https://tc39.github.io/process-document/)
-- Author: Faraz Kelhini
-- Champion(s): TBD 
 
 ## Introduction
 
