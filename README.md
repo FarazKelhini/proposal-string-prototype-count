@@ -8,24 +8,27 @@
 
 This proposal seeks to introduce a `count()` method to the `String.prototype` which counts the number of non-overlapping occurrences of a substring within a string. This method is analogous to Python's `str.count()` method.
 
-### Motivation
+## Motivation
 
 Counting occurrences of a substring is a common operation in string processing. Currently, there is no built-in method in ECMAScript to do this. Developers often resort to workarounds using regular expressions or split/join operations, which can be less readable and less efficient. The addition of `String.prototype.count` would provide a straightforward way to perform this common task, and would align with functionality provided in other popular languages:
 
 - **[Python](https://docs.python.org/3/library/stdtypes.html#str.count)**: `str.count(sub[, start[, end]])` is widely used and highly intuitive.
-- **PHP**: The `substr_count()` function is similar to Python's `count()` method. [source](https://www.php.net/manual/en/function.substr-count.php)
-- **Ruby**: `String#count` works similarly but also supports character ranges. [source](https://ruby-doc.org/core-1.9.3/String.html#method-i-count)
+- **[PHP](https://www.php.net/manual/en/function.substr-count.php)**: The `substr_count()` function is similar to Python's `count()` method. 
+- **[Ruby](https://ruby-doc.org/core-1.9.3/String.html#method-i-count)**: `String#count` works similarly but also supports character ranges.
+
+## Method Signature
+
+String.prototype.count(searchString[, start[, end]])
+
+## Parameters
+
+- **searchString** *(Required)*: A string that represents the substring to search for within the calling string.
+- **start** *(Optional)*: An integer value that specifies the zero-based index at which the search should begin. Defaults to `0`.
+- **end** *(Optional)*: An integer value that specifies the zero-based index at which the search should end. Defaults to the length of the string.
 
 
 
 
-
-
-
-Please ensure the following:
-  1. You have read the [process document](https://tc39.github.io/process-document/)
-  1. You have reviewed the [existing proposals](https://github.com/tc39/proposals/)
-  1. You are aware that your proposal requires being a member of TC39, or locating a TC39 delegate to “champion” your proposal
 
 ## Create your proposal repo
 
