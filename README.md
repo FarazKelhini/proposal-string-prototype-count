@@ -2,7 +2,9 @@
 
 ## Status
 
-[Stage 0](https://tc39.github.io/process-document/) - Strawman
+Stage: [0 - Strawman](https://tc39.github.io/process-document/)
+Author: Faraz Kelhini
+Champion(s): TBD 
 
 ## Introduction
 
@@ -18,7 +20,9 @@ Counting occurrences of a substring is a common operation in string processing. 
 
 ## Method Signature
 
+```javascript
 String.prototype.count(searchString[, start[, end]])
+```
 
 ## Parameters
 
