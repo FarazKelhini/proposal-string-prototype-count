@@ -106,7 +106,7 @@ Therefore, it can be transferred to other kinds of objects for use as a method.
 - It is case-sensitive, consistent with other string methods like `includes()`.
 - Ensures that the method is called on a value that can be converted to an object (e.g., strings, numbers, or booleans). Throws a `TypeError` if the method is called on `null` or `undefined`.
 - If `start` is not provided, it defaults to `0`. If provided, it is converted to an integer. The final value is clamped to be within `[0, length of string]` to ensure it is valid.
-- If `end` is not provided, it defaults to the length of the string. If provided, it is converted to an integer. The final value of `endIndex` is clamped to be within `[0, length of string]` to ensure it is valid.
+- If `end` is not provided, it defaults to the length of the string. If provided, it is converted to an integer. The final value is clamped to be within `[0, length of string]` to ensure it is valid.
 - If `startIndex` is greater than or equal to `endIndex`, there is no range to search within, so the method immediately returns `0`.
 - If `searchString` is an empty string, returns `0`. This avoids potential infinite loops when counting empty substrings.
 
