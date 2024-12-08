@@ -8,7 +8,17 @@
 
 This proposal seeks to introduce a `count()` method to the `String.prototype` which counts the number of non-overlapping occurrences of a substring within a string. This method is analogous to Python's `str.count()` method.
 
+### Motivation
 
+Counting occurrences of a substring is a common operation in string processing. Currently, there is no built-in method in ECMAScript to do this. Developers often resort to workarounds using regular expressions or split/join operations, which can be less readable and less efficient. The addition of `String.prototype.count` would provide a straightforward way to perform this common task, and would align with functionality provided in other popular languages:
+
+- **([Python](https://docs.python.org/3/library/stdtypes.html#str.count))**: `str.count(sub[, start[, end]])` is widely used and highly intuitive.
+
+- **PHP**: The `substr_count()` function is similar to Python's `count()` method.
+https://www.php.net/manual/en/function.substr-count.php
+
+- **Ruby**: `String#count` works similarly but also supports character ranges.
+https://ruby-doc.org/core-1.9.3/String.html#method-i-count
 
 
 
