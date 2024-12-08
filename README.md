@@ -26,14 +26,48 @@ String.prototype.count(searchString[, start[, end]])
 - **start** *(Optional)*: An integer value that specifies the zero-based index at which the search should begin. Defaults to `0`.
 - **end** *(Optional)*: An integer value that specifies the zero-based index at which the search should end. Defaults to the length of the string.
 
+## Proposed Specification
+
+1. Let _O_ be ? RequireObjectCoercible(*this* value).
+2. Let _S_ be ? ToString(_O_).
+3. Let _searchString_ be ? ToString(_searchString_).
+4. If _start_ is undefined, let _startIndex_ be 0.
+5. Else, let _startIndex_ be ? ToIntegerOrInfinity(_start_).
+6. If _end_ is not present, let _endIndex_ be the length of _S_.
+7. Else, let _endIndex_ be ? ToIntegerOrInfinity(_end_).
+8. Let _startIndex_ be min(max(_startIndex_, 0), the length of _S_).
+9. Let _endIndex_ be min(max(_endIndex_, 0), the length of _S_).
+10. If _startIndex_ >= _endIndex_, return 0.
+11. Let _subString_ be the substring of _S_ from _startIndex_ to _endIndex_.
+12. If _searchString_ is an empty string, return 0.
+13. Let _count_ be 0.
+14. Let _position_ be 0.
+15. Repeat, while _position_ is not -1:
+    1. Let _position_ be the result of searching for _searchString_ in _subString_ starting at index _position_.
+    2. If _position_ is not -1:
+        1. Increment _count_ by 1.
+        2. Set _position_ to _position_ + the length of _searchString_.
+16. Return _count_.
+
+Note: This method is intentionally generic; it does not require that its this value be a String object.
+Therefore, it can be transferred to other kinds of objects for use as a method.
+
+## Behavior
+
+- It is case-sensitive, consistent with other string methods like `includes()`.
+- Ensures that the method is called on a value that can be converted to an object (e.g., strings, numbers, or booleans). Throws a `TypeError` if the method is called on `null` or `undefined`.
+- If `start` is not provided, it defaults to `0`. If provided, it is converted to an integer. The final value is clamped to be within `[0, length of string]` to ensure it is valid.
+- If `end` is not provided, it defaults to the length of the string. If provided, it is converted to an integer. The final value of `endIndex` is clamped to be within `[0, length of string]` to ensure it is valid.
+- If `startIndex` is greater than or equal to `endIndex`, there is no range to search within, so the method immediately returns `0`.
+- If `searchString` is an empty string, returns `0`. This avoids potential infinite loops when counting empty substrings.
+
+
 
 
 
 
 ## Create your proposal repo
 
-Follow these steps:
-  1. Click the green [“use this template”](https://github.com/tc39/template-for-proposals/generate) button in the repo header. (Note: Do not fork this repo in GitHub's web interface, as that will later prevent transfer into the TC39 organization)
   1. Update ecmarkup and the biblio to the latest version: `npm install --save-dev ecmarkup@latest && npm install --save-dev --save-exact @tc39/ecma262-biblio@latest`.
   1. Go to your repo settings page:
       1. Under “General”, under “Features”, ensure “Issues” is checked, and disable “Wiki”, and “Projects” (unless you intend to use Projects)
