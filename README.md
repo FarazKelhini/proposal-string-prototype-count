@@ -2,9 +2,9 @@
 
 ## Status
 
-Stage: [0 - Strawman](https://tc39.github.io/process-document/)
-Author: Faraz Kelhini
-Champion(s): TBD 
+- Stage: [0 - Strawman](https://tc39.github.io/process-document/)
+- Author: Faraz Kelhini
+- Champion(s): TBD 
 
 ## Introduction
 
@@ -113,43 +113,3 @@ Therefore, it can be transferred to other kinds of objects for use as a method.
 ## Backward Compatibility
 
 Adding this method will not break existing code, as it adds new functionality to the `String` prototype without modifying existing methods.
-
-
-
-
-
-## Create your proposal repo
-
-  1. Update ecmarkup and the biblio to the latest version: `npm install --save-dev ecmarkup@latest && npm install --save-dev --save-exact @tc39/ecma262-biblio@latest`.
-  1. Go to your repo settings page:
-      1. Under the “Pages” section on the left sidebar, and set the source to “deploy from a branch”, select “gh-pages” in the branch dropdown, and then ensure that “Enforce HTTPS” is checked.
-      1. Under the “Actions” section on the left sidebar, under “General”, select “Read and write permissions” under “Workflow permissions” and click “Save”
-  1. [“How to write a good explainer”][explainer] explains how to make a good first impression.
-
-      > Each TC39 proposal should have a `README.md` file which explains the purpose
-      > of the proposal and its shape at a high level.
-      >
-      > ...
-      >
-      > The rest of this page can be used as a template ...
-
-      Your explainer can point readers to the `index.html` generated from `spec.emu`
-      via markdown like
-
-      ```markdown
-      You can browse the [ecmarkup output](https://ACCOUNT.github.io/PROJECT/)
-      or browse the [source](https://github.com/ACCOUNT/PROJECT/blob/HEAD/spec.emu).
-      ```
-
-      where *ACCOUNT* and *PROJECT* are the first two path elements in your project's Github URL.
-      For example, for github.com/**tc39**/**template-for-proposals**, *ACCOUNT* is “tc39”
-      and *PROJECT* is “template-for-proposals”.
-
-
-## Maintain your proposal repo
-
-  1. Make your changes to `spec.emu` (ecmarkup uses HTML syntax, but is not HTML, so I strongly suggest not naming it “.html”)
-  1. Any commit that makes meaningful changes to the spec, should run `npm run build` to verify that the build will succeed and the output looks as expected.
-  1. Whenever you update `ecmarkup`, run `npm run build` to verify that the build will succeed and the output looks as expected.
-
-  [explainer]: https://github.com/tc39/how-we-work/blob/HEAD/explainer.md
