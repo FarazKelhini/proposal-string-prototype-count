@@ -113,3 +113,8 @@ Therefore, it can be transferred to other kinds of objects for use as a method.
 ## Backward Compatibility
 
 Adding this method will not break existing code, as it adds new functionality to the `String` prototype without modifying existing methods.
+
+## Q&A
+
+Q: Why not add an option to toggle case sensitivity?
+A: To maintain consistency with other string methods like `includes()`.
