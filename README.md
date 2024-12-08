@@ -26,6 +26,51 @@ String.prototype.count(searchString[, start[, end]])
 - **start** *(Optional)*: An integer value that specifies the zero-based index at which the search should begin. Defaults to `0`.
 - **end** *(Optional)*: An integer value that specifies the zero-based index at which the search should end. Defaults to the length of the string.
 
+## Implementation
+
+A JavaScript implementation of the proposal.
+
+```javascript
+if (!String.prototype.count) {
+  String.prototype.count = function (searchString, start, end) {
+    if (this == null) {
+      throw new TypeError("String.prototype.count called on null or undefined");
+    }
+
+    const string = String(this);
+    const search = String(searchString);
+    const startIndex = Math.max(0, Math.min(string.length, start ? Number(start) || 0 : 0));
+    const endIndex = Math.max(startIndex, Math.min(string.length, end ? Number(end) || string.length : string.length));
+
+    if (!search) return 0; 
+
+    const substring = string.slice(startIndex, endIndex);
+    let count = 0;
+    let position = 0;
+
+    while ((position = substring.indexOf(search, position)) !== -1) {
+      count++;
+      position += search.length;
+    }
+
+    return count;
+  };
+}
+```
+
+## Example Usage
+
+```javascript
+const str = "hello world, hello universe";
+
+console.log(str.count("hello"));       // 2
+console.log(str.count("o"));           // 3
+console.log(str.count("hello", 13));   // 1
+console.log(str.count("hello", 0, 5)); // 1
+console.log(str.count("notfound"));    // 0
+console.log(str.count(""));            // 0
+```
+
 ## Proposed Specification
 
 1. Let _O_ be ? RequireObjectCoercible(*this* value).
@@ -61,6 +106,9 @@ Therefore, it can be transferred to other kinds of objects for use as a method.
 - If `startIndex` is greater than or equal to `endIndex`, there is no range to search within, so the method immediately returns `0`.
 - If `searchString` is an empty string, returns `0`. This avoids potential infinite loops when counting empty substrings.
 
+## Backward Compatibility
+
+Adding this method will not break existing code, as it adds new functionality to the `String` prototype without modifying existing methods.
 
 
 
@@ -70,8 +118,6 @@ Therefore, it can be transferred to other kinds of objects for use as a method.
 
   1. Update ecmarkup and the biblio to the latest version: `npm install --save-dev ecmarkup@latest && npm install --save-dev --save-exact @tc39/ecma262-biblio@latest`.
   1. Go to your repo settings page:
-      1. Under “General”, under “Features”, ensure “Issues” is checked, and disable “Wiki”, and “Projects” (unless you intend to use Projects)
-      1. Under “Pull Requests”, check “Always suggest updating pull request branches” and “automatically delete head branches”
       1. Under the “Pages” section on the left sidebar, and set the source to “deploy from a branch”, select “gh-pages” in the branch dropdown, and then ensure that “Enforce HTTPS” is checked.
       1. Under the “Actions” section on the left sidebar, under “General”, select “Read and write permissions” under “Workflow permissions” and click “Save”
   1. [“How to write a good explainer”][explainer] explains how to make a good first impression.
