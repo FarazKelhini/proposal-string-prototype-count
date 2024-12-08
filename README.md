@@ -1,4 +1,4 @@
-# String.prototype.count Proposal
+# `String.prototype.count` Proposal
 
 ## Status
 
